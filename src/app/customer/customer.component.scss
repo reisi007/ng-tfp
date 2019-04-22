@@ -1,0 +1,23 @@
+.modelFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: baseline;
+
+  span {
+    white-space: nowrap;
+    $spacing: 6px;
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+
+    input, .signatur {
+      margin-right: 8px;
+      margin-left: 2px;
+    }
+
+    label {
+      margin-left: 2px;
+    }
+  }
+}

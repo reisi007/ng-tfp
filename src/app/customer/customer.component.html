@@ -1,3 +1,23 @@
-<p>
-  customer works! :D
+<p class="modelFlex">
+  <span>
+     <label>Vorname: </label>
+    <input name="firstname" type="text" required="">
+  </span>
+  <span>
+     <label>Nachname: </label>
+    <input name="lastname" type="text" required="">
+  </span>
+  <span>
+  <label>Email: </label>
+  <input name="email" type="email" required>
+    </span>
+  <span>
+  <label>Unterschrift: </label>
+  <canvas class="signatur" #signatur width="400" height="100"></canvas>
+   <span class="no-print"> <button (click)="resetSignature()">Unterschrift löschen</button></span>
+    </span>
+  <span>
+  <label>Geburtsdatum:</label>
+    <input name="birthday" [(ngModel)]="birthday" (ngModelChange)="onBirthdayChanegd()" type="date" required=""> {{age}}
+</span>
 </p>

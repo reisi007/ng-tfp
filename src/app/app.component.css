@@ -2,7 +2,12 @@
   border: lightslategrey solid 1px;
   padding: 8px;
   margin: 4px;
-  @media print {
+}
+
+@media print {
+  .model-card {
     page-break-inside: avoid;
   }
 }
+
+/*# sourceMappingURL=app.component.css.map */
