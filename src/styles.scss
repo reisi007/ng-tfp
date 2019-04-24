@@ -1,7 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "materialButtons";
+
+
+p {
+  margin-bottom: 4px;
+}
+
 @media print {
   .no-print {
-    display: none;
+    display: none !important;
   }
 
   .no-seperation {
@@ -21,4 +28,10 @@ p, textarea, input {
 
 .signatur, input, textarea {
   border: black solid 1px;
+}
+
+.buttonRow {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
 }

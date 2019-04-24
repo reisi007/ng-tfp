@@ -1,9 +1,33 @@
-.modelFlex {
+.center {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: left;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+
+  .outerFlex {
+    display: flex;
+    flex-direction: row;
+
+    .modelImage {
+      margin: 8px;
+    }
+
+    .modelFlex {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: right;
+      align-items: flex-end;
+
+    }
+
+    .modelImg {
+      $imgSize: 200px;
+      max-height: $imgSize;
+      max-width: $imgSize;
+    }
+
+
+  }
 
   span {
     white-space: nowrap;
@@ -19,5 +43,12 @@
     label {
       margin-left: 2px;
     }
+
+    button {
+      margin-left: 8px;
+    }
   }
+
+
 }
+

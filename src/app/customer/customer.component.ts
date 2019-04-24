@@ -15,15 +15,36 @@ export class CustomerComponent implements OnInit {
 
   private signaturePad: SignaturePad;
 
-  @ViewChild('signatur') signaturCanvas: ElementRef;
+  @ViewChild('signatur') signaturCanvasRef: ElementRef;
+
+  @ViewChild('modelImg') modelImgRef: ElementRef;
+
+  @ViewChild('modelImgUpload') modelImgUploadRef: ElementRef;
+
+  modelImg: HTMLImageElement;
+  modelImgUpload: HTMLInputElement;
 
   constructor() {
   }
 
   ngOnInit() {
-    const nativeElement: HTMLCanvasElement = this.signaturCanvas.nativeElement;
-
+    const nativeElement: HTMLCanvasElement = this.signaturCanvasRef.nativeElement;
     this.signaturePad = new SignaturePad(nativeElement);
+
+    this.modelImg = this.modelImgRef.nativeElement;
+    this.modelImgUpload = this.modelImgUploadRef.nativeElement;
+  }
+
+  onUploadedImageChanged() {
+    if (this.modelImgUpload.files && this.modelImgUpload.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent) => {
+        this.modelImg.src = e.target.result;
+      };
+
+      reader.readAsDataURL(this.modelImgUpload.files[0]);
+    }
   }
 
   resetSignature() {

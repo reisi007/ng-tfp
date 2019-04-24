@@ -1,23 +1,39 @@
-<p class="modelFlex">
+<div class="center">
+  <div class="outerFlex">
+    <div class="modelImage">
+     <span>
+      <label>Bild des Models: </label>
+      <input class="no-print " #modelImgUpload (change)="onUploadedImageChanged()" name="image" type="file" required="">
+      <img #modelImg class="modelImg" src=""/>
+       </span>
+    </div>
+    <div class="modelFlex">
   <span>
      <label>Vorname: </label>
     <input name="firstname" type="text" required="">
   </span>
-  <span>
+      <span>
      <label>Nachname: </label>
     <input name="lastname" type="text" required="">
   </span>
-  <span>
+      <span>
   <label>Email: </label>
   <input name="email" type="email" required>
     </span>
+      <span>
+    <label>Geburtsdatum:</label>
+    <input name="birthday" [(ngModel)]="birthday" (ngModelChange)="onBirthdayChanegd()" type="date" required="">
+      <br/>{{age}}
+    </span>
+    </div>
+  </div>
   <span>
   <label>Unterschrift: </label>
   <canvas class="signatur" #signatur width="400" height="100"></canvas>
-   <span class="no-print"> <button (click)="resetSignature()">Unterschrift löschen</button></span>
-    </span>
-  <span>
-  <label>Geburtsdatum:</label>
-    <input name="birthday" [(ngModel)]="birthday" (ngModelChange)="onBirthdayChanegd()" type="date" required=""> {{age}}
+    <span class="no-print">
+  <button (click)="resetSignature()">Unterschrift löschen</button>
 </span>
-</p>
+
+    </span>
+</div>
+
