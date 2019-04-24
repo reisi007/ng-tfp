@@ -1,13 +1,12 @@
 <div class="center">
   <div class="outerFlex">
     <div class="modelImage">
-     <span>
       <label>Bild des Models: </label>
       <input class="no-print " #modelImgUpload (change)="onUploadedImageChanged()" name="image" type="file" required="">
-      <img #modelImg class="modelImg" src=""/>
-       </span>
+      <img #modelImg class="modelImg"
+           src="../../assets/placeholder.jpg"/>
     </div>
-    <div class="modelFlex">
+    <div class="modelDataInputFlex">
   <span>
      <label>Vorname: </label>
     <input name="firstname" type="text" required="">
@@ -22,18 +21,18 @@
     </span>
       <span>
     <label>Geburtsdatum:</label>
-    <input name="birthday" [(ngModel)]="birthday" (ngModelChange)="onBirthdayChanegd()" type="date" required="">
-      <br/>{{age}}
+    <input name="birthday" [(ngModel)]="birthday" type="date" required="">
     </span>
+      <div class="text-right">Alter (Unterschrift) {{birthday | age:nowString }}</div>
+      <div class="text-right">Alter (Fotoshoot) {{birthday | age: shootingDate }}</div>
     </div>
   </div>
-  <span>
-  <label>Unterschrift: </label>
-  <canvas class="signatur" #signatur width="400" height="100"></canvas>
-    <span class="no-print">
-  <button (click)="resetSignature()">Unterschrift löschen</button>
-</span>
-
-    </span>
+  <div class="signaturFlex">
+    <label>Unterschrift am {{now | date : 'dd.MM.yyyy \'um\' HH:mm:ss'}}: </label>
+    <canvas class="signatur" #signatur width="550" height="150"></canvas>
+    <span class="no-print deleteSignature">
+     <button (click)="resetSignature()">Unterschrift löschen</button>
+   </span>
+  </div>
 </div>
 

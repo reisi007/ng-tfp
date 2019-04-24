@@ -7,42 +7,54 @@
 .center .outerFlex {
   display: flex;
   flex-direction: row;
+  margin: 0 auto;
+  min-width: 80%;
+  justify-content: center;
 }
 
 .center .outerFlex .modelImage {
   margin: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-.center .outerFlex .modelFlex {
+.center .outerFlex .modelImage input[name=image] {
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.center .outerFlex .modelImage .modelImg {
+  max-height: 222px;
+  max-width: 222px;
+  object-fit: contain;
+}
+
+.center .outerFlex .modelDataInputFlex {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: right;
+  justify-content: space-evenly;
   align-items: flex-end;
 }
 
-.center .outerFlex .modelImg {
-  max-height: 200px;
-  max-width: 200px;
+.center .outerFlex .modelDataInputFlex .text-right {
+  text-align: right;
+  margin-right: 7px;
+  margin-top: 4px;
 }
 
-.center span {
-  white-space: nowrap;
-  margin-top: 6px;
-  margin-bottom: 6px;
+.center .signaturFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.center span input, .center span .signatur {
-  margin-right: 8px;
-  margin-left: 2px;
+.center .signaturFlex .deleteSignature {
+  align-self: center;
 }
 
-.center span label {
-  margin-left: 2px;
-}
-
-.center span button {
-  margin-left: 8px;
+.center .signaturFlex .deleteSignature button {
+  margin: 8px;
 }
 
 /*# sourceMappingURL=customer.component.css.map */

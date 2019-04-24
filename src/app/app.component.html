@@ -6,9 +6,12 @@
   </h1>
 
   <p class="info no-print">
-    Bitte lies diesen Vertrag durch und klicke unten auf "Drucken". Du kannst meistens einen PDF Drucker auswählen bzw.
-    kannst anstatt zu Drucken das Dokument als PDF speichern. <br>
-    Du erhältst eine digital signierte Version des Vertrags als Bestätigung an die angegebene E-Mail Adresse!
+    Bitte lies diesen Vertrag durch, fülle die Felder im unteren Teil aus und klicke wenn du fertig bist auf "Drucken".
+    Du kannst meistens einen PDF Drucker auswählen bzw.
+    anstatt zu Drucken das Dokument als PDF speichern. <br>
+    Schicke das PDF anschließend an <a [href]="'mailto:' + email">diese E-Mail Adresse</a>, du erhältst eine digital
+    signierte
+    Version des Vertrags als Bestätigung an die im Vertrag angegebene E-Mail Adresse!
   </p>
 
 </div>
@@ -70,7 +73,10 @@
 </p></span>
 <h2>Daten</h2>
 <span>
-<label for="zeitpunkt">Zeitpunkt des Shootings: </label><input id="zeitpunkt" type="datetime-local"/>
+<label for="zeitpunkt">Zeitpunkt des Shootings: </label><input id="zeitpunkt"
+                                                               (change)="updateShootingDate($event)"
+                                                               type="date"/>
+  <input id="zeitpunktZeit" type="time"/>
 </span>
 <br>
 <span>

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {MeetingDateService} from './meeting-date.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,14 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private  meetingDateService: MeetingDateService) {
+
+  }
+
   title = 'Reisishot TFP Vertrag';
+  email = 'florian@reisishot.pictures';
   customers = [{}];
+
 
   addCustomer(): void {
     this.customers.push({});
@@ -17,6 +24,11 @@ export class AppComponent {
     if (this.customers.length > 1) {
       this.customers.pop();
     }
+  }
+
+  updateShootingDate($event) {
+    const shootingDate = ($event.currentTarget as HTMLInputElement).value;
+    this.meetingDateService.meetingDate.next(shootingDate);
   }
 
 

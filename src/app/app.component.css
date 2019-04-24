@@ -10,4 +10,9 @@
   }
 }
 
+textarea {
+  width: 90%;
+  height: 100px;
+}
+
 /*# sourceMappingURL=app.component.css.map */

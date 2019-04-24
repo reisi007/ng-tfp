@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import SignaturePad from 'signature_pad';
+import {MeetingDateService} from "../meeting-date.service";
 
 
 @Component({
@@ -10,8 +11,8 @@ import SignaturePad from 'signature_pad';
 export class CustomerComponent implements OnInit {
 
   birthday: string;
-
-  age = '';
+  now = new Date();
+  nowString = this.now.toString();
 
   private signaturePad: SignaturePad;
 
@@ -23,8 +24,12 @@ export class CustomerComponent implements OnInit {
 
   modelImg: HTMLImageElement;
   modelImgUpload: HTMLInputElement;
+  shootingDate: string;
 
-  constructor() {
+  constructor(private  meetingDateService: MeetingDateService) {
+    meetingDateService.meetingDate.asObservable().subscribe((value => {
+      this.shootingDate = value;
+    }));
   }
 
   ngOnInit() {
@@ -40,6 +45,7 @@ export class CustomerComponent implements OnInit {
       const reader = new FileReader();
 
       reader.onload = (e: ProgressEvent) => {
+        // @ts-ignore
         this.modelImg.src = e.target.result;
       };
 
@@ -49,20 +55,5 @@ export class CustomerComponent implements OnInit {
 
   resetSignature() {
     this.signaturePad.clear();
-  }
-
-  onBirthdayChanegd(): void {
-    const cur = new Date();
-    cur.setHours(23, 59, 0, 0);
-    const enteredDate = new Date(this.birthday);
-    enteredDate.setHours(0, 0, 0, 0);
-    let ms = cur.getTime() - enteredDate.getTime();
-    ms = ms / 1000 / 60 / 60 / 24 / 365.249;
-    const detail = 100;
-    const calculatedAge = Math.floor(ms * detail) / detail;
-    this.age = 'Alter: ' + calculatedAge + ' Jahre';
-    if (calculatedAge < 18) {
-      this.age += ' -- Minderjährig';
-    }
   }
 }

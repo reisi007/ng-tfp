@@ -6,6 +6,16 @@ p {
   margin-bottom: 4px;
 }
 
+h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
 @media print {
   .no-print {
     display: none !important;
@@ -34,4 +44,21 @@ p, textarea, input {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-evenly;
+}
+
+span {
+  white-space: nowrap;
+  $spacing: 6px;
+  margin-top: $spacing;
+  margin-bottom: $spacing;
+
+  input, .signatur {
+    margin-right: 8px;
+    margin-left: 2px;
+  }
+
+  label {
+    margin-left: 2px;
+    margin-bottom: 2px;
+  }
 }
