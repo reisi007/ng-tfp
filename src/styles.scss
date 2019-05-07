@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "materialButtons";
 
-
 p {
   margin-bottom: 4px;
 }
@@ -23,6 +22,16 @@ h3 {
 
   .no-seperation {
     page-break-inside: avoid;
+
+    p {
+      word-wrap: break-word;
+    }
+  }
+}
+
+@media not print {
+  .no-screen {
+    display: none !important;
   }
 }
 
