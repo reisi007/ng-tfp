@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {MeetingDateService} from './meeting-date.service';
+import {LocalStorage} from "ngx-store";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
 
   title = 'Reisishot TFP Vertrag';
   email = 'florian@reisishot.pictures';
-  customers = [{}];
+  @LocalStorage('modelCount') customers = [{}];
+  @LocalStorage('modelNote') usernotes: string;
 
 
   addCustomer(): void {
