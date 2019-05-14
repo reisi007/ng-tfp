@@ -9,19 +9,19 @@
     <div class="modelDataInputFlex">
   <span>
      <label>Vorname: </label>
-    <input name="firstname" type="text" required="">
+    <input [ngModel]="firstname" name="firstname" (ngModelChange)="firstnameChanged($event)" type="text" required="">
   </span>
       <span>
      <label>Nachname: </label>
-    <input name="lastname" type="text" required="">
+    <input [ngModel]="lastname" name="lastname" (ngModelChange)="lastnameChanged($event)" type="text" required="">
   </span>
       <span>
   <label>Email: </label>
-  <input name="email" type="email" required>
+  <input [ngModel]="email" name="email" (ngModelChange)="emailChanged($event)" type="email" required>
     </span>
       <span>
     <label>Geburtsdatum:</label>
-    <input name="birthday" [(ngModel)]="birthday" type="date" required="">
+    <input name="birthday" [(ngModel)]="birthday" (ngModelChange)="birthdayChanged($event)" type="date" required="">
     </span>
       <div class="text-right">Alter (Unterschrift) {{birthday | age:nowString }}</div>
       <div class="text-right">Alter (Fotoshoot) {{birthday | age: shootingDate }}</div>

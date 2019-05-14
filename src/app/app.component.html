@@ -95,7 +95,8 @@
 <div>
   <label for="anmerkungenModel">Anmerkungen des Models:</label>
   <br>
-  <textarea [ngModel]="usernotes" rows="8" cols="80" id="anmerkungenModel"></textarea>
+  <textarea [ngModel]="usernotes" (ngModelChange)="updateUsernote($event)" rows="8" cols="80"
+            id="anmerkungenModel"></textarea>
 </div>
 <h2>Models, die diese Bedingungen akzeptieren</h2>
 <form name="main">
@@ -106,7 +107,7 @@
 
   <div *ngFor="let e of customers; let  cnt = index" class="model-card">
     <h3>{{cnt + 1}}. Model</h3>
-    <app-customer></app-customer>
+    <app-customer [customerId]="cnt"></app-customer>
   </div>
 </form>
 <div class="buttons no-print">
