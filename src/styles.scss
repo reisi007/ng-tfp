@@ -20,6 +20,13 @@ h3 {
     display: none !important;
   }
 
+  .content {
+    p {
+      page-break-inside: avoid;
+      word-wrap: break-word;
+    }
+  }
+
   .no-seperation {
     page-break-inside: avoid;
 
