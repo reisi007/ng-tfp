@@ -1,0 +1,33 @@
+.model-card {
+  border: lightslategrey solid 1px;
+  padding: 8px;
+  margin: 4px;
+  @media print {
+    page-break-inside: avoid;
+  }
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+}
+
+.digitalSignaturbox {
+  width: 8.5cm;
+  $h: 3.35cm;
+  height: $h;
+  border: black solid 1px;
+  margin: 0 auto;
+  display: table;
+  vertical-align: center;
+  page-break-inside: avoid;
+  margin-top: $h/2;
+
+  p {
+    width: 80%;
+    height: $h;
+    position: relative;
+    top: $h/3;
+    margin: 0 auto;
+  }
+}

@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import SignaturePad from 'signature_pad';
-import {MeetingDateService} from '../meeting-date.service';
-import {LocalstorageService} from '../localstorage.service';
+import {MeetingDateService} from '../contract/meeting-date.service';
+import {LocalstorageService} from '../contract/localstorage.service';
 
 
 @Component({

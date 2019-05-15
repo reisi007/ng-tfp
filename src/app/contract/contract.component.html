@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <img height="64px" alt="Angular Logo" src="../assets/logo.png"/>
+  <h1>
+    {{ title }}
+  </h1>
+
+  <p class="info no-print">
+    Bitte lies diesen Vertrag durch, fülle die Felder im unteren Teil aus und klicke wenn du fertig bist auf "Drucken".
+    Du kannst meistens einen PDF Drucker auswählen bzw.
+    anstatt zu Drucken das Dokument als PDF speichern. <br>
+    Schicke das PDF anschließend an <a [href]="'mailto:' + email">diese E-Mail Adresse</a>, du erhältst eine digital
+    signierte
+    Version des Vertrags als Bestätigung an die im Vertrag angegebene E-Mail Adresse!
+  </p>
+</div>
+<div class="content" [innerHTML]="contract | safeHtml"></div>
+<p class="no-screen">
+  <code>Vertragsvorlage: {{contractType | uppercase}}</code>
+</p>
+<h2>Daten</h2>
+<div>
+  <label for="zeitpunkt">Zeitpunkt des Shootings: </label><input id="zeitpunkt"
+                                                                 (change)="updateShootingDate($event)"
+                                                                 type="date"/>
+  <input id="zeitpunktZeit" type="time"/>
+</div>
+<br>
+<div>
+  <label for="anmerkungenModel">Anmerkungen des Models:</label>
+  <br>
+  <textarea [ngModel]="usernotes" (ngModelChange)="updateUsernote($event)" rows="8" cols="80"
+            id="anmerkungenModel"></textarea>
+</div>
+<h2>Models, die diese Bedingungen akzeptieren</h2>
+<form name="main">
+  <div class="no-print buttonRow">
+    <button (click)="addCustomer()">Weiteres Model hinzufügen</button>
+    <button class="secondary" (click)="removeCustomer()">Letztes Model löschen</button>
+  </div>
+
+  <div *ngFor="let e of customers; let  cnt = index" class="model-card">
+    <h3>{{cnt + 1}}. Model</h3>
+    <app-customer [customerId]="cnt"></app-customer>
+  </div>
+</form>
+<div class="buttons no-print">
+
+  <button class="xl" type="submit" (click)="generatePdf()">
+    Drucken
+  </button>
+</div>
+<div class="no-screen">
+  <div class="digitalSignaturbox"><p>Hier kommt die digitale Signatur des Fotografens hin!</p></div>
+</div>
+
+

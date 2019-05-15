@@ -1,0 +1,37 @@
+.model-card {
+  border: lightslategrey solid 1px;
+  padding: 8px;
+  margin: 4px;
+}
+
+@media print {
+  .model-card {
+    page-break-inside: avoid;
+  }
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+}
+
+.digitalSignaturbox {
+  width: 8.5cm;
+  height: 3.35cm;
+  border: black solid 1px;
+  margin: 0 auto;
+  display: table;
+  vertical-align: center;
+  page-break-inside: avoid;
+  margin-top: 1.675cm;
+}
+
+.digitalSignaturbox p {
+  width: 80%;
+  height: 3.35cm;
+  position: relative;
+  top: 1.11667cm;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=contract.component.css.map */
