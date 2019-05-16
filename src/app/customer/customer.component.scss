@@ -9,6 +9,7 @@
     margin: 0 auto;
     min-width: 80%;
     justify-content: center;
+    flex-wrap: wrap;
 
     .modelImage {
       margin: 8px;
@@ -46,7 +47,16 @@
   .signaturFlex {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
+
+    .signaturContainer {
+      width: 90%;
+      min-width: 300px;
+      max-width: 10cm;
+      min-height: 100px;
+      margin: 0 auto;
+    }
 
     .deleteSignature {
       align-self: center;
@@ -58,4 +68,3 @@
     }
   }
 }
-

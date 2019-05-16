@@ -35,6 +35,7 @@ export class CustomerComponent implements OnInit {
   private signaturePad: SignaturePad;
 
   @ViewChild('signatur') signaturCanvasRef: ElementRef;
+  @ViewChild('signaturDiv') signaturCanvasDivRef: ElementRef;
 
   @ViewChild('modelImg') modelImgRef: ElementRef;
 
@@ -45,8 +46,8 @@ export class CustomerComponent implements OnInit {
   shootingDate: string;
 
   ngOnInit(): void {
-    const nativeElement: HTMLCanvasElement = this.signaturCanvasRef.nativeElement;
-    this.signaturePad = new SignaturePad(nativeElement);
+    // Setup signatur
+    this.onSignaturResize();
 
     this.modelImg = this.modelImgRef.nativeElement;
     this.modelImgUpload = this.modelImgUploadRef.nativeElement;
@@ -95,5 +96,27 @@ export class CustomerComponent implements OnInit {
 
   birthdayChanged(value): void {
     this.localstorageService.setModelData(this.KEY_BIRTHDAY, this.customerId, value);
+  }
+
+  onSignaturResize(): void {
+    // Setup canvas
+    const signaturCanvas: HTMLCanvasElement = this.signaturCanvasRef.nativeElement;
+
+    const signaturDiv: HTMLDivElement = this.signaturCanvasDivRef.nativeElement;
+    const signaturWidth = signaturDiv.offsetWidth;
+    const signaturHeight = signaturDiv.offsetHeight;
+
+    signaturCanvas.width = signaturWidth;
+    signaturCanvas.height = signaturHeight;
+
+    let data = null;
+    if (this.signaturePad) {
+      data = this.signaturePad.toData();
+    }
+
+    this.signaturePad = new SignaturePad(signaturCanvas);
+    if (data !== null) {
+      this.signaturePad.fromData(data);
+    }
   }
 }
