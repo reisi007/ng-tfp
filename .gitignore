@@ -46,3 +46,8 @@ testem.log
 Thumbs.db
 
 **/.sass-cache
+
+# Custom
+
+*.css
+*.css.map
