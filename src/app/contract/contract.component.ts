@@ -34,7 +34,7 @@ export class ContractComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.contractType = params.type;
 
-      this.http.get('assets/' + this.contractType + '.markdown', {responseType: 'text'})
+      this.http.get('assets/contracts/' + this.contractType + '.markdown', {responseType: 'text'})
         .subscribe((markdown: string) => this.contract = new Converter().makeHtml(markdown), () =>
           this.contract = '<h2>Keine Daten zu diesem Vertrag gefunden!</h2>');
     });
