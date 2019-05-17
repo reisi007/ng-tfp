@@ -9,6 +9,7 @@ import {AgePipe} from './customer/age.pipe';
 import {SafePipe} from './contract/safe.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {ContractComponent} from './contract/contract.component';
+import {AufnahmebereicheComponent} from './aufnahmebereiche/aufnahmebereiche.component';
 
 const appRoutes: Routes = [
   {
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     CustomerComponent,
     AgePipe,
     SafePipe,
-    ContractComponent
+    ContractComponent,
+    AufnahmebereicheComponent
   ],
   imports: [
     BrowserModule,

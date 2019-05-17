@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MeetingDateService} from './meeting-date.service';
-import {LocalstorageService} from './localstorage.service';
+import {LocalstorageService} from '../localstorage.service';
 import {HttpClient} from '@angular/common/http';
 import {Converter} from 'showdown';
 import {ActivatedRoute} from '@angular/router';

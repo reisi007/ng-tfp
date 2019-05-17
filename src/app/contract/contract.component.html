@@ -25,9 +25,10 @@
   <input id="zeitpunktZeit" type="time"/>
 </div>
 <br>
+<app-aufnahmebereiche></app-aufnahmebereiche>
+<br>
 <div>
-  <label for="anmerkungenModel">Anmerkungen des Models (hier wäre ein guter Platz z.B. für die Art des
-    Shootings):</label>
+  <label for="anmerkungenModel">Anmerkungen des Models:</label>
   <br>
   <textarea [ngModel]="usernotes" (ngModelChange)="updateUsernote($event)" rows="8" cols="80"
             id="anmerkungenModel"></textarea>
