@@ -3,10 +3,10 @@ import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({name: 'age'})
 export class AgePipe implements PipeTransform {
   transform(enteredDateString: string, evaluateDate: string): string {
-    if (!enteredDateString) {
+    if (!(enteredDateString && evaluateDate)) {
       return '?? Jahre';
     }
-    const cur = evaluateDate ? new Date(evaluateDate) : new Date();
+    const cur = new Date(evaluateDate);
     cur.setHours(23, 59, 0, 0);
     const enteredDate = new Date(enteredDateString);
     enteredDate.setHours(0, 0, 0, 0);

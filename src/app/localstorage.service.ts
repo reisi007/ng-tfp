@@ -44,11 +44,11 @@ export class LocalstorageService {
     this.storageService.set(this.KEY_NOTE, LocalstorageService.emptyStringAsUndefined(note));
   }
 
-  public getAufnahmebereich(): string {
+  public getAufnahmebereich(): number {
     return LocalstorageService.emptyStringAsUndefined(this.storageService.get(this.KEY_AUFNAHMEBEREICH));
   }
 
-  public setAufnahmebereich(aufnahmebereich: string) {
+  public setAufnahmebereich(aufnahmebereich: number) {
     this.storageService.set(this.KEY_AUFNAHMEBEREICH, LocalstorageService.emptyStringAsUndefined(aufnahmebereich));
   }
 
