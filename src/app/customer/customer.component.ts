@@ -48,13 +48,15 @@ export class CustomerComponent implements OnInit {
   modelImg: HTMLImageElement;
   modelImgUpload: HTMLInputElement;
   shootingDate: string;
+  signaturCanvas: HTMLCanvasElement;
 
   ngOnInit(): void {
-    // Setup signatur
-    this.onSignaturResize();
-
     this.modelImg = this.modelImgRef.nativeElement;
     this.modelImgUpload = this.modelImgUploadRef.nativeElement;
+    this.signaturCanvas = this.signaturCanvasRef.nativeElement;
+
+    // Setup signatur
+    this.onSignaturResize();
 
     // Fill fields
     this.birthday = this.localstorageService.getModelData(this.KEY_BIRTHDAY, this.customerId);
@@ -84,6 +86,7 @@ export class CustomerComponent implements OnInit {
 
   resetSignature(): void {
     this.signaturePad.clear();
+    this.drawCanvasBackground();
   }
 
   firstnameChanged(value): void {
@@ -104,27 +107,30 @@ export class CustomerComponent implements OnInit {
 
   onSignaturResize(): void {
     // Setup canvas
-    const signaturCanvas: HTMLCanvasElement = this.signaturCanvasRef.nativeElement;
     const signaturDiv: HTMLDivElement = this.signaturCanvasDivRef.nativeElement;
     const signaturWidth = signaturDiv.offsetWidth;
     const signaturHeight = signaturDiv.offsetHeight;
 
-    signaturCanvas.width = signaturWidth;
-    signaturCanvas.height = signaturHeight;
+    this.signaturCanvas.width = signaturWidth;
+    this.signaturCanvas.height = signaturHeight;
 
     let data = null;
     if (this.signaturePad) {
       data = this.signaturePad.toData();
     }
 
-    this.signaturePad = new SignaturePad(signaturCanvas);
+    this.signaturePad = new SignaturePad(this.signaturCanvas);
 
     if (data !== null) {
       this.signaturePad.fromData(data);
     }
 
+    this.drawCanvasBackground();
+  }
+
+  drawCanvasBackground(): void {
     // Add background text
-    const canvasContext = signaturCanvas.getContext('2d');
+    const canvasContext = this.signaturCanvas.getContext('2d');
     const textHeightPx = 10;
     canvasContext.font = textHeightPx + 'px Arial';
     canvasContext.globalCompositeOperation = 'destination-over';
@@ -133,8 +139,8 @@ export class CustomerComponent implements OnInit {
 
     const canvasText = 'Reisishot Contract ' + this.datePipe.transform(this.now, 'dd.MM.yyyy \'um\' HH:mm:ss');
     const canvasTextMetrics = canvasContext.measureText(canvasText);
-    for (let y = 0; y - textHeightPx < signaturCanvas.height; y += 4 + textHeightPx) {
-      for (let x = -20 * y; x - canvasTextMetrics.width < signaturCanvas.width; x += 12 + canvasTextMetrics.width) {
+    for (let y = 0; y - textHeightPx < this.signaturCanvas.height; y += 4 + textHeightPx) {
+      for (let x = -20 * y; x - canvasTextMetrics.width < this.signaturCanvas.width; x += 12 + canvasTextMetrics.width) {
         canvasContext.strokeText(canvasText, x, y);
       }
     }
