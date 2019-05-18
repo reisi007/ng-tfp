@@ -10,6 +10,7 @@ import {SafePipe} from './contract/safe.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {ContractComponent} from './contract/contract.component';
 import {AufnahmebereicheComponent} from './aufnahmebereiche/aufnahmebereiche.component';
+import {DatePipe} from '@angular/common';
 
 const appRoutes: Routes = [
   {
@@ -37,7 +38,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
