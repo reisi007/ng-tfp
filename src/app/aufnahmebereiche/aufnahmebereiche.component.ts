@@ -19,7 +19,7 @@ export class AufnahmebereicheComponent implements OnInit, AfterViewInit {
   private readonly aufnahmebereiche: Array<AufnahmebereichModel> = [
     new AufnahmebereichModel(10, 'Portrait'),
     new AufnahmebereichModel(20, 'Pärchen'),
-    new AufnahmebereichModel(30, 'Bikini'),
+    new AufnahmebereichModel(30, 'Badebekleidung'),
     new AufnahmebereichModel(40, 'Dessous'),
     new AufnahmebereichModel(50, 'Keine Einschränkung')
   ];

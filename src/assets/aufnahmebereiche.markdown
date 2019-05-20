@@ -4,15 +4,15 @@ In diesem Abschnitt wird der gewünschte Aufnahmebereich des Models definiert. E
 
 ### Portrait
 
-Aufnahmen von einer Person bzw. von mehreren Personen ohne deutlich sichtbaren Körperkontakt in Alltagskleidung. Das bedeutet, dass keine Unterwäsche / Badebekleidung sichtbar sein darf (Ausnahme: Träger des BHs).
+Aufnahmen von einer Person bzw. von mehreren Personen ohne deutlich sichtbaren Körperkontakt in Alltagskleidung. Bei einem Portrait ist weder der ganze Oberkörper ohne Kleidung zu sehen. Bei Frauen muss der BH zumindest teilweise mit einem (semi)-transparenten Stoff verdeckt sein.
 
 ### Pärchen
 
 Aufnahme von mindestens 2 Personen, die in einem physischen Näheverhältnis stehen. Das bedeutet dass sich die Personen auf den Bildern berühren, umarmen bzw. küssen können.
 
-### Bikini
+### Badebekleidung
 
-Aufnahmen in Badebekleidung. Bei Frauen müssen die Brustwarzen verdeckt sein.
+Aufnahmen in Badebekleidung. Bei Frauen müssen die Brustwarzen vollständig verdeckt sein.
 
 *Mindestalter des Models: **18 Jahre***
 
