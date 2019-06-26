@@ -117,6 +117,7 @@ export class CustomerComponent implements OnInit {
     let data = null;
     if (this.signaturePad) {
       data = this.signaturePad.toData();
+      this.signaturePad.off();
     }
 
     this.signaturePad = new SignaturePad(this.signaturCanvas);
