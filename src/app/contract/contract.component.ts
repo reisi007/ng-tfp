@@ -78,7 +78,7 @@ export class ContractComponent implements OnInit {
       }
     });
     a.then(canvas => {
-      const factor = 0.75; // Magic constant
+      const factor = 0.75 * window.devicePixelRatio; // Magic constant
       const img = canvas.toDataURL('image/jpeg', 0.9);
       const imgElement = new Image();
       const offset = 10;
