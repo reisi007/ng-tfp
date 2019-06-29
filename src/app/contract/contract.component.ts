@@ -4,6 +4,8 @@ import {LocalstorageService} from '../localstorage.service';
 import {HttpClient} from '@angular/common/http';
 import {Converter} from 'showdown';
 import {ActivatedRoute} from '@angular/router';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-contract',
@@ -63,6 +65,35 @@ export class ContractComponent implements OnInit {
   }
 
   generatePdf(): void {
-    window.print();
+    document.body.style.width = document.body.offsetWidth + 'px';
+    let ignoredHeight = 0;
+    // @ts-ignore
+    const a: Promise<HTMLCanvasElement> = html2canvas(document.body, {
+      ignoreElements: (element: HTMLElement) => {
+        const shouldIgnore = element.classList.contains('no-print');
+        if (shouldIgnore) {
+          ignoredHeight += element.offsetHeight;
+        }
+        return shouldIgnore;
+      }
+    });
+    a.then(canvas => {
+      const factor = 0.75; // Magic constant
+      const img = canvas.toDataURL('image/jpeg', 0.9);
+      const imgElement = new Image();
+      const offset = 10;
+      imgElement.onload = () => {
+        const doc = new jsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          letterRendering: true,
+          format: [imgElement.width + 2 * offset, imgElement.height + 2 * offset - factor * ignoredHeight]
+        });
+        doc.addImage(img, 'JPEG', offset, offset - ignoredHeight * factor, imgElement.width * factor, imgElement.height * factor);
+        doc.save('Reisishot_Fotoshooting Vertrag.pdf');
+        document.body.style.width = '';
+      };
+      imgElement.src = img;
+    });
   }
 }

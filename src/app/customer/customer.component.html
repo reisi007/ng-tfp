@@ -3,8 +3,9 @@
     <div class="modelImage">
       <label>Bild des Models: </label>
       <input class="no-print " #modelImgUpload (change)="onUploadedImageChanged()" name="image" type="file" required="">
-      <img #modelImg class="modelImg"
-           src="../../assets/placeholder.jpg"/>
+      <div class="modelImg"><img #modelImg
+                                 src="../../assets/placeholder.jpg"/>
+      </div>
     </div>
     <div class="modelDataInputFlex">
   <span>
