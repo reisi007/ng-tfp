@@ -67,19 +67,29 @@ export class ContractComponent implements OnInit {
   generatePdf(): void {
     document.body.style.width = document.body.offsetWidth + 'px';
     let ignoredHeight = 0;
+    const printOnlyElements: Array<Element> = [];
+
+    const show: HTMLCollection = window.document.getElementsByClassName('no-screen');
+    for (let i = 0; i < show.length; i++) {
+      const cur: Element = show.item(i);
+      printOnlyElements.push(cur);
+      cur.classList.remove('no-screen');
+    }
+    console.log(printOnlyElements);
+
     // @ts-ignore
     const a: Promise<HTMLCanvasElement> = html2canvas(document.body, {
-      ignoreElements: (element: HTMLElement) => {
-        const shouldIgnore = element.classList.contains('no-print');
+      ignoreElements: (el: HTMLElement) => {
+        const shouldIgnore = el.classList.contains('no-print');
         if (shouldIgnore) {
-          ignoredHeight += element.offsetHeight;
+          ignoredHeight += el.offsetHeight;
         }
         return shouldIgnore;
       }
     });
     a.then(canvas => {
       const factor = 0.75 * window.devicePixelRatio; // Magic constant
-      const img = canvas.toDataURL('image/jpeg', 0.9);
+      const img = canvas.toDataURL('image/jpeg', 0.90);
       const imgElement = new Image();
       const offset = 10;
       imgElement.onload = () => {
@@ -92,8 +102,13 @@ export class ContractComponent implements OnInit {
         doc.addImage(img, 'JPEG', offset, offset - ignoredHeight * factor, imgElement.width * factor, imgElement.height * factor);
         doc.save('Reisishot_Fotoshooting Vertrag.pdf');
         document.body.style.width = '';
+        printOnlyElements.forEach(elem => elem.classList.add('no-screen'));
       };
       imgElement.src = img;
     });
+  }
+
+  printPage(): void {
+    window.print();
   }
 }
