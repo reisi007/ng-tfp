@@ -6,12 +6,8 @@
   </h1>
 
   <p class="info no-print">
-    Bitte lies diesen Vertrag durch, fülle die Felder im unteren Teil aus und klicke wenn du fertig bist auf "Drucken".
-    Du kannst meistens einen PDF Drucker auswählen bzw.
-    anstatt zu Drucken das Dokument als PDF speichern. <br>
-    Schicke das PDF anschließend an <a [href]="'mailto:' + email">diese E-Mail Adresse</a>, du erhältst eine digital
-    signierte
-    Version des Vertrags als Bestätigung an die im Vertrag angegebene E-Mail Adresse!
+    Bitte lies diesen Vertrag durch. Ich werde ihn mit dir noch einmal durchgehen und vor dem Fotoshooting ausfüllen. Du
+    erhältst von mir nach dem Shooting schnellstmöglich eine von mir digital signierte Version.
   </p>
 </div>
 <div class="content" [innerHTML]="contract | safeHtml"></div>
@@ -20,12 +16,16 @@
 </p>
 <h2>Daten</h2>
 <div>
-  <label for="zeitpunkt">Zeitpunkt des Shootings: </label>
+  <label for="zeitpunkt">Gültigkeit des TFP Vertrages: </label>
+  <select>
+    <option>am</option>
+    <option>ab</option>
+  </select>
   <input id="zeitpunkt" (change)="updateShootingDate($event)" type="date"/>
   <input id="zeitpunktZeit" type="time"/>
 </div>
 <br>
-<app-aufnahmebereiche></app-aufnahmebereiche>
+<app-aufnahmebereiche *ngIf="contractComplexity != 'simple'"></app-aufnahmebereiche>
 <br>
 <div>
   <label for="anmerkungenModel">Anmerkungen des Models:</label>
@@ -47,7 +47,7 @@
 </form>
 <div class="buttons no-print">
 
-  <button class="xl" type="submit" (click)="generatePdf()">
+  <button class="xl" type="submit" (click)="printPage()">
     Drucken
   </button>
 </div>

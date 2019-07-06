@@ -18,6 +18,7 @@ export class ContractComponent implements OnInit {
   usernotes: string;
   contract: string;
   contractType: string;
+  contractComplexity: string;
 
   constructor(
     private  meetingDateService: MeetingDateService,
@@ -32,7 +33,8 @@ export class ContractComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.contractType = params.type;
+      this.contractType = params.contractType;
+      this.contractComplexity = params.contractComplexity;
 
       this.http.get('assets/contracts/' + this.contractType + '.markdown', {responseType: 'text'})
         .subscribe((markdown: string) => this.contract = new Converter().makeHtml(markdown), () =>

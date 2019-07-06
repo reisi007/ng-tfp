@@ -16,9 +16,13 @@ const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/tfp'
+    redirectTo: 'simple/tfp'
   }, {
-    path: ':type',
+    path: 'tfp',
+    pathMatch: 'full',
+    redirectTo: 'simple/tfp'
+  }, {
+    path: ':contractComplexity/:contractType',
     component: ContractComponent
   }
 ];

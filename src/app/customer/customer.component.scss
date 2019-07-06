@@ -22,10 +22,18 @@
       }
 
       .modelImg {
-        $imgSize: 222px;
+        $factor: 1.5;
+        $imgSize: 150px;
         max-height: $imgSize;
-        max-width: $imgSize;
-        object-fit: contain;
+        min-height: $imgSize;
+        max-width: $factor * $imgSize;
+        margin: 0 auto;
+
+        img {
+          max-height: $imgSize;
+          height: $imgSize;
+          max-width: $factor * $imgSize;
+        }
       }
     }
 

@@ -54,12 +54,14 @@ h4 {
   padding: 8px;
 }
 
-p, textarea, input {
+body {
   font-family: Calibri, sans-serif;
 }
 
-.signatur, input, textarea {
+.signatur, input, textarea, select {
+  @extend body;
   border: black solid 1px;
+  margin: 2px;
 }
 
 .buttonRow {
