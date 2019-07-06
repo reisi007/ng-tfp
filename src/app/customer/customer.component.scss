@@ -25,13 +25,7 @@
         $imgSize: 222px;
         max-height: $imgSize;
         max-width: $imgSize;
-        margin: 0 auto;
-
-        img {
-          max-height: $imgSize;
-          height: $imgSize;
-          max-width: $imgSize;
-        }
+        object-fit: contain;
       }
     }
 

@@ -4,8 +4,6 @@ import {LocalstorageService} from '../localstorage.service';
 import {HttpClient} from '@angular/common/http';
 import {Converter} from 'showdown';
 import {ActivatedRoute} from '@angular/router';
-import * as jsPDF from 'jspdf';
-import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-contract',
@@ -106,6 +104,7 @@ export class ContractComponent implements OnInit {
       };
       imgElement.src = img;
     });
+    window.print();
   }
 
   printPage(): void {
