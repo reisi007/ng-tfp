@@ -67,4 +67,9 @@ export class ContractComponent implements OnInit {
   printPage(): void {
     window.print();
   }
+
+  resetCache(): void {
+    this.localstorageService.clear();
+    window.location.reload();
+  }
 }

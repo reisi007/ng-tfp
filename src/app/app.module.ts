@@ -16,11 +16,11 @@ const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'simple/tfp'
+    redirectTo: 'simple/standard'
   }, {
     path: 'tfp',
     pathMatch: 'full',
-    redirectTo: 'simple/tfp'
+    redirectTo: 'simple/standard'
   }, {
     path: ':contractComplexity/:contractType',
     component: ContractComponent

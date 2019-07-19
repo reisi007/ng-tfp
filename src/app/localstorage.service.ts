@@ -23,6 +23,10 @@ export class LocalstorageService {
     }
   }
 
+  public clear() {
+    this.storageService.clear();
+  }
+
   public setCustomers(models: Array<object>) {
     this.storageService.set(this.KEY_MODEL, models);
   }

@@ -4,7 +4,7 @@
   <h1>
     {{ title }}
   </h1>
-
+  <button class="no-print" (click)="resetCache()">Eingaben zurücksetzen</button>
   <p class="info no-print">
     Bitte lies diesen Vertrag durch. Ich werde ihn mit dir noch einmal durchgehen und vor dem Fotoshooting ausfüllen. Du
     erhältst von mir nach dem Shooting schnellstmöglich eine von mir digital signierte Version.
@@ -16,13 +16,13 @@
 </p>
 <h2>Daten</h2>
 <div>
-  <label for="zeitpunkt">Gültigkeit des TFP Vertrages: </label>
-  <select>
+  <label for="zeitpunkt">Gültigkeit des Vertrages: </label>
+  <select aria-label="Gültigkeit des Vertrages">
     <option>am</option>
     <option>ab</option>
   </select>
-  <input id="zeitpunkt" (change)="updateShootingDate($event)" type="date"/>
-  <input id="zeitpunktZeit" type="time"/>
+  <input id="zeitpunkt" aria-label="Zeitpunkt des Shootings (Tag)" (change)="updateShootingDate($event)" type="date"/>
+  <input id="zeitpunktZeit" aria-label="Zeitpunkt des Shootings (Uhrzeit)" type="time"/>
 </div>
 <br>
 <app-aufnahmebereiche *ngIf="contractComplexity != 'simple'"></app-aufnahmebereiche>
