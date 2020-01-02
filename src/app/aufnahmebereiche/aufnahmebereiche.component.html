@@ -1,7 +1,0 @@
-<div [innerHTML]="aufnahmebereicheText | safeHtml"></div>
-<p>
-  <label for="aufnahmebereiche">Gewünschter maximaler AufnahmebereichModel für dieses Shooting: </label>
-  <select id="aufnahmebereiche" #aufnahmebereich (change)="aufnahmebereichChanged()">
-    <option *ngFor="let cur of aufnahmebereiche" [value]="cur.key">{{cur.value}}</option>
-  </select>
-</p>

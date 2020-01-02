@@ -9,20 +9,18 @@ import {AgePipe} from './customer/age.pipe';
 import {SafePipe} from './contract/safe.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {ContractComponent} from './contract/contract.component';
-import {AufnahmebereicheComponent} from './aufnahmebereiche/aufnahmebereiche.component';
 import {DatePipe} from '@angular/common';
+import {SignaturComponent} from './signatur/signatur.component';
+import {SelectorComponent} from './selector/selector.component';
+import {HeaderComponent} from './header/header.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'simple/standard'
+    component: SelectorComponent
   }, {
-    path: 'tfp',
-    pathMatch: 'full',
-    redirectTo: 'simple/standard'
-  }, {
-    path: ':contractComplexity/:contractType',
+    path: ':contractType',
     component: ContractComponent
   }
 ];
@@ -34,7 +32,9 @@ const appRoutes: Routes = [
     AgePipe,
     SafePipe,
     ContractComponent,
-    AufnahmebereicheComponent
+    SignaturComponent,
+    SelectorComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

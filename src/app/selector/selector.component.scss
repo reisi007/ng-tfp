@@ -1,0 +1,14 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 5%;
+
+  a {
+    width: 90%;
+    @media (min-aspect-ratio: 1/1) {
+      width: 70%;
+    }
+    text-decoration: none;
+  }
+}

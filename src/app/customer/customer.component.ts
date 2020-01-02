@@ -1,8 +1,6 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import SignaturePad from 'signature_pad';
 import {MeetingDateService} from '../contract/meeting-date.service';
 import {LocalstorageService} from '../localstorage.service';
-import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-customer',
@@ -15,8 +13,7 @@ export class CustomerComponent implements OnInit {
 
   constructor(
     private  meetingDateService: MeetingDateService,
-    private localstorageService: LocalstorageService,
-    private datePipe: DatePipe
+    private localstorageService: LocalstorageService
   ) {
     meetingDateService.meetingDate.asObservable().subscribe((value => {
       this.shootingDate = value;
@@ -36,11 +33,6 @@ export class CustomerComponent implements OnInit {
   private readonly KEY_PICTURE = 'picture';
 
 
-  private signaturePad: SignaturePad;
-
-  @ViewChild('signatur') signaturCanvasRef: ElementRef;
-  @ViewChild('signaturDiv') signaturCanvasDivRef: ElementRef;
-
   @ViewChild('modelImg') modelImgRef: ElementRef;
 
   @ViewChild('modelImgUpload') modelImgUploadRef: ElementRef;
@@ -48,15 +40,12 @@ export class CustomerComponent implements OnInit {
   modelImg: HTMLImageElement;
   modelImgUpload: HTMLInputElement;
   shootingDate: string;
-  signaturCanvas: HTMLCanvasElement;
+
 
   ngOnInit(): void {
     this.modelImg = this.modelImgRef.nativeElement;
     this.modelImgUpload = this.modelImgUploadRef.nativeElement;
-    this.signaturCanvas = this.signaturCanvasRef.nativeElement;
 
-    // Setup signatur
-    this.onSignaturResize();
 
     // Fill fields
     this.birthday = this.localstorageService.getModelData(this.KEY_BIRTHDAY, this.customerId);
@@ -84,10 +73,6 @@ export class CustomerComponent implements OnInit {
     }
   }
 
-  resetSignature(): void {
-    this.signaturePad.clear();
-    this.drawCanvasBackground();
-  }
 
   firstnameChanged(value): void {
     this.localstorageService.setModelData(this.KEY_FIRSTNAME, this.customerId, value);
@@ -103,49 +88,5 @@ export class CustomerComponent implements OnInit {
 
   birthdayChanged(value): void {
     this.localstorageService.setModelData(this.KEY_BIRTHDAY, this.customerId, value);
-  }
-
-  onSignaturResize(): void {
-    // Setup canvas
-    const signaturDiv: HTMLDivElement = this.signaturCanvasDivRef.nativeElement;
-    const signaturWidth = signaturDiv.offsetWidth;
-    const signaturHeight = signaturDiv.offsetHeight;
-
-    this.signaturCanvas.width = signaturWidth;
-    this.signaturCanvas.height = signaturHeight;
-
-    let data = null;
-    if (this.signaturePad) {
-      data = this.signaturePad.toData();
-      this.signaturePad.off();
-    }
-
-    this.signaturePad = new SignaturePad(this.signaturCanvas);
-
-    if (data !== null) {
-      this.signaturePad.fromData(data);
-    }
-
-    this.drawCanvasBackground();
-  }
-
-  drawCanvasBackground(): void {
-    // Add background text
-    const canvasContext = this.signaturCanvas.getContext('2d');
-    const textHeightPx = 10;
-    canvasContext.font = textHeightPx + 'px Arial';
-    canvasContext.globalCompositeOperation = 'destination-over';
-    canvasContext.strokeStyle = '#b2b2b2';
-    canvasContext.fillStyle = '#d3d3d3';
-
-    const canvasText = 'Reisishot Contract ' + this.datePipe.transform(this.now, 'dd.MM.yyyy \'um\' HH:mm:ss');
-    const canvasTextMetrics = canvasContext.measureText(canvasText);
-    for (let y = 0; y - textHeightPx < this.signaturCanvas.height; y += 4 + textHeightPx) {
-      for (let x = -20 * y; x - canvasTextMetrics.width < this.signaturCanvas.width; x += 12 + canvasTextMetrics.width) {
-        canvasContext.strokeText(canvasText, x, y);
-      }
-    }
-    canvasContext.fillStyle = 'black';
-    canvasContext.globalCompositeOperation = 'source-over';
   }
 }

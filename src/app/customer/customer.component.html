@@ -26,13 +26,5 @@
       <div class="text-right">Alter (Fotoshoot) {{birthday | age: shootingDate }}</div>
     </div>
   </div>
-  <div class="signaturFlex">
-    <label>Unterschrift am {{now | date : 'dd.MM.yyyy \'um\' HH:mm:ss'}}: </label>
-    <div class="signaturContainer" (window:resize)="onSignaturResize()" #signaturDiv>
-      <canvas class="signatur" #signatur></canvas>
-    </div>
-    <span class="no-print deleteSignature">
-     <button (click)="resetSignature()">Unterschrift löschen</button>
-   </span>
-  </div>
 </div>
+<app-signatur></app-signatur>

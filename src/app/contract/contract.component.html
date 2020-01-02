@@ -1,16 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <img height="64px" alt="Angular Logo" src="../assets/logo.png"/>
-  <h1>
-    {{ title }}
-  </h1>
+<app-header></app-header>
+<div class="text-center">
+
   <button class="no-print" (click)="resetCache()">Eingaben zurücksetzen</button>
   <p class="info no-print">
     Bitte lies diesen Vertrag durch. Ich werde ihn mit dir noch einmal durchgehen und vor dem Fotoshooting ausfüllen. Du
     erhältst von mir nach dem Shooting schnellstmöglich eine von mir digital signierte Version.
   </p>
 </div>
-<div class="content" [innerHTML]="contract | safeHtml"></div>
+<div class="content">
+  <div [innerHTML]="contract | safeHtml"></div>
+  <div [innerHTML]="endblabla | safeHtml"></div>
+</div>
 <p class="no-screen">
   <code>Vertragsvorlage: {{contractType | uppercase}}</code>
 </p>
@@ -18,14 +18,12 @@
 <div>
   <label for="zeitpunkt">Gültigkeit des Vertrages: </label>
   <select aria-label="Gültigkeit des Vertrages">
-    <option>am</option>
     <option>ab</option>
+    <option>am</option>
   </select>
   <input id="zeitpunkt" aria-label="Zeitpunkt des Shootings (Tag)" (change)="updateShootingDate($event)" type="date"/>
-  <input id="zeitpunktZeit" aria-label="Zeitpunkt des Shootings (Uhrzeit)" type="time"/>
 </div>
 <br>
-<app-aufnahmebereiche *ngIf="contractComplexity != 'simple'"></app-aufnahmebereiche>
 <br>
 <div>
   <label for="anmerkungenModel">Anmerkungen des Models:</label>
@@ -45,14 +43,21 @@
     <app-customer [customerId]="cnt"></app-customer>
   </div>
 </form>
-<div class="buttons no-print">
 
+<p class="no-print buttons center">
+  <input type="checkbox" id="digitalSignatur" name="digitalSignatur" [(ngModel)]="isDigitaleSignatur">
+  <label for="digitalSignatur">Unterschrift Fotograf mit digitaler Signatur</label>
+</p>
+
+<app-signatur [hidden]="isDigitaleSignatur"></app-signatur>
+<div class="buttons no-print">
   <button class="xl" type="submit" (click)="printPage()">
     Drucken
   </button>
 </div>
-<div class="no-screen">
+<div [hidden]="!isDigitaleSignatur" class="no-screen">
   <div class="digitalSignaturbox">
     <p>Der Vertrag wird vom Fotograf hier digital signiert!</p>
   </div>
 </div>
+

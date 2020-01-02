@@ -1,0 +1,24 @@
+.signaturFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .signaturContainer {
+    width: 90%;
+    min-width: 300px;
+    max-width: 10cm;
+    min-height: 100px;
+    max-height: 4cm;
+    margin: 0 auto;
+  }
+
+  .deleteSignature {
+    align-self: center;
+
+    button {
+      $m: 8px;
+      margin: $m;
+    }
+  }
+}
