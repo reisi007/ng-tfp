@@ -12,9 +12,9 @@ export class SignaturComponent implements OnInit {
 
   private signaturePad: SignaturePad;
 
-  @ViewChild('signatur') private signaturCanvasRef: ElementRef;
+  @ViewChild('signatur', {static: true}) private signaturCanvasRef: ElementRef;
 
-  @ViewChild('signaturDiv') private signaturCanvasDivRef: ElementRef;
+  @ViewChild('signaturDiv', {static: true}) private signaturCanvasDivRef: ElementRef;
   private signaturCanvas: HTMLCanvasElement;
 
 

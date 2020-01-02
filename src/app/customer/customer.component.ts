@@ -33,9 +33,9 @@ export class CustomerComponent implements OnInit {
   private readonly KEY_PICTURE = 'picture';
 
 
-  @ViewChild('modelImg') modelImgRef: ElementRef;
+  @ViewChild('modelImg', {static: true}) modelImgRef: ElementRef;
 
-  @ViewChild('modelImgUpload') modelImgUploadRef: ElementRef;
+  @ViewChild('modelImgUpload', {static: true}) modelImgUploadRef: ElementRef;
 
   modelImg: HTMLImageElement;
   modelImgUpload: HTMLInputElement;

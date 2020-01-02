@@ -36,8 +36,8 @@ export class ContractComponent implements OnInit {
   private readonly converter = new Converter();
   public isDigitaleSignatur = true;
   private now = new Date();
-  @ViewChild('signatur') signaturCanvasRef: ElementRef;
-  @ViewChild('signaturDiv') signaturCanvasDivRef: ElementRef;
+  @ViewChild('signatur', {static: false}) signaturCanvasRef: ElementRef;
+  @ViewChild('signaturDiv', {static: false}) signaturCanvasDivRef: ElementRef;
 
   private signaturePad: SignaturePad;
   signaturCanvas: HTMLCanvasElement;
