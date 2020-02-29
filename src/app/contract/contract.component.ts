@@ -28,16 +28,16 @@ export class ContractComponent implements OnInit {
     this.datePipe = datePipe;
   }
 
-  private readonly customers: Array<object>;
-  private usernotes: string;
-  private contract = '';
-  private endblabla = '';
-  private contractType: string;
+  public readonly customers: Array<object>;
+  public usernotes: string;
+  public contract = '';
+  public endblabla = '';
+  public contractType: string;
   private readonly converter = new Converter();
   public isDigitaleSignatur = true;
   private now = new Date();
-  @ViewChild('signatur', {static: false}) signaturCanvasRef: ElementRef;
-  @ViewChild('signaturDiv', {static: false}) signaturCanvasDivRef: ElementRef;
+  @ViewChild('signatur') signaturCanvasRef: ElementRef;
+  @ViewChild('signaturDiv') signaturCanvasDivRef: ElementRef;
 
   private signaturePad: SignaturePad;
   signaturCanvas: HTMLCanvasElement;
