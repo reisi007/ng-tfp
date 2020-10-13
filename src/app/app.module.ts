@@ -11,18 +11,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {ContractComponent} from './contract/contract.component';
 import {DatePipe} from '@angular/common';
 import {SignaturComponent} from './signatur/signatur.component';
-import {SelectorComponent} from './selector/selector.component';
 import {HeaderComponent} from './header/header.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: SelectorComponent
+    redirectTo: 'default',
   }, {
     path: ':contractType',
-    component: ContractComponent
-  }
+    component: ContractComponent,
+  },
 ];
 
 @NgModule({
@@ -33,17 +32,16 @@ const appRoutes: Routes = [
     SafePipe,
     ContractComponent,
     SignaturComponent,
-    SelectorComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

@@ -1,45 +1,35 @@
 <app-header></app-header>
 <div class="text-center">
-
   <button class="no-print" (click)="resetCache()">Eingaben zurücksetzen</button>
-  <p class="info no-print">
-    Bitte lies diesen Vertrag durch. Ich werde ihn mit dir noch einmal durchgehen und vor dem Fotoshooting ausfüllen. Du
-    erhältst von mir nach dem Shooting schnellstmöglich eine von mir digital signierte Version.
-  </p>
 </div>
 <div class="content">
   <div [innerHTML]="contract | safeHtml"></div>
-  <div [innerHTML]="endblabla | safeHtml"></div>
 </div>
 <p class="no-screen">
   <code>Vertragsvorlage: {{contractType | uppercase}}</code>
 </p>
 <h2>Daten</h2>
 <div>
-  <label for="zeitpunkt">Gültigkeit des Vertrages: </label>
-  <select aria-label="Gültigkeit des Vertrages">
-    <option>ab</option>
-    <option>am</option>
-  </select>
+  <label for="zeitpunkt">Gültigkeit des Vertrages: ab </label>
   <input id="zeitpunkt" aria-label="Zeitpunkt des Shootings (Tag)" (change)="updateShootingDate($event)" type="date"/>
 </div>
 <br>
 <br>
 <div>
-  <label for="anmerkungenModel">Anmerkungen des Models:</label>
+  <label for="anmerkungenModel">Anmerkungen zum Vertrag:</label>
   <br>
   <textarea [ngModel]="usernotes" (ngModelChange)="updateUsernote($event)" rows="8" cols="80"
             id="anmerkungenModel"></textarea>
 </div>
-<h2>Models, die diese Bedingungen akzeptieren</h2>
+<h2>Personen, die diesen Vertrag akzeptieren</h2>
 <form name="main">
   <div class="no-print buttonRow">
-    <button (click)="addCustomer()">Weiteres Model hinzufügen</button>
-    <button class="secondary" (click)="removeCustomer()">Letztes Model löschen</button>
+    <button (click)="addCustomer()">Weitere Person hinzufügen</button>
+    <button class="secondary" (click)="removeCustomer()">Letzte Person löschen</button>
   </div>
 
   <div *ngFor="let e of customers; let  cnt = index" class="model-card">
-    <h3>{{cnt + 1}}. Model</h3>
+    <h3>{{cnt + 1}}. Person</h3>
     <app-customer [customerId]="cnt"></app-customer>
   </div>
 </form>
@@ -49,13 +39,13 @@
   <label for="digitalSignatur">Unterschrift Fotograf mit digitaler Signatur</label>
 </p>
 
-<app-signatur [hidden]="isDigitaleSignatur"></app-signatur>
+<app-signatur *ngIf="!isDigitaleSignatur"></app-signatur>
 <div class="buttons no-print">
   <button class="xl" type="submit" (click)="printPage()">
     Drucken
   </button>
 </div>
-<div [hidden]="!isDigitaleSignatur" class="no-screen">
+<div *ngIf="isDigitaleSignatur" class="no-screen">
   <div class="digitalSignaturbox">
     <p>Der Vertrag wird vom Fotograf hier digital signiert!</p>
   </div>

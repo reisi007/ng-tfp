@@ -5,7 +5,7 @@ import {DatePipe} from '@angular/common';
 @Component({
   selector: 'app-signatur',
   templateUrl: './signatur.component.html',
-  styleUrls: ['./signatur.component.scss']
+  styleUrls: ['./signatur.component.scss'],
 })
 export class SignaturComponent implements OnInit {
   now = new Date();
@@ -39,18 +39,19 @@ export class SignaturComponent implements OnInit {
     const signaturWidth = signaturDiv.offsetWidth;
     const signaturHeight = signaturDiv.offsetHeight;
 
+
     this.signaturCanvas.width = signaturWidth;
     this.signaturCanvas.height = signaturHeight;
 
     let data = null;
-    if (this.signaturePad) {
+    if(this.signaturePad) {
       data = this.signaturePad.toData();
       this.signaturePad.off();
     }
 
     this.signaturePad = new SignaturePad(this.signaturCanvas);
 
-    if (data !== null) {
+    if(data !== null) {
       this.signaturePad.fromData(data);
     }
 
@@ -68,8 +69,8 @@ export class SignaturComponent implements OnInit {
 
     const canvasText = 'Reisishot Contract ' + this.datePipe.transform(this.now, 'dd.MM.yyyy \'um\' HH:mm:ss');
     const canvasTextMetrics = canvasContext.measureText(canvasText);
-    for (let y = 0; y - textHeightPx < this.signaturCanvas.height; y += 4 + textHeightPx) {
-      for (let x = -20 * y; x - canvasTextMetrics.width < this.signaturCanvas.width; x += 12 + canvasTextMetrics.width) {
+    for(let y = 0; y - textHeightPx < this.signaturCanvas.height; y += 4 + textHeightPx) {
+      for(let x = -20 * y; x - canvasTextMetrics.width < this.signaturCanvas.width; x += 12 + canvasTextMetrics.width) {
         canvasContext.strokeText(canvasText, x, y);
       }
     }

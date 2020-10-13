@@ -1,7 +1,7 @@
 <div class="center">
   <div class="outerFlex">
     <div class="modelImage">
-      <label>Bild des Models: </label>
+      <label>Ein Bild von dir: </label>
       <input class="no-print " #modelImgUpload (change)="onUploadedImageChanged()" name="image" type="file" required="">
       <img #modelImg class="modelImg" src="../../assets/placeholder.jpg"/>
     </div>
@@ -22,8 +22,8 @@
     <label>Geburtsdatum:</label>
     <input name="birthday" [(ngModel)]="birthday" (ngModelChange)="birthdayChanged($event)" type="date" required="">
     </span>
-      <div class="text-right">Alter (Unterschrift) {{birthday | age:nowString }}</div>
-      <div class="text-right">Alter (Fotoshoot) {{birthday | age: shootingDate }}</div>
+      <div class="text-right">Alter am Tag derUnterschrift {{birthday | age:nowString }}</div>
+      <div class="text-right">Alter am Tag des Shooting {{birthday | age: shootingDate }}</div>
     </div>
   </div>
 </div>
